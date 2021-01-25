@@ -3,8 +3,9 @@
 The script will parse the library from the  link AND
 the information will be saved in the same path as .html file.
 Author: Florin Malutan
-Rev: 1.1
+Rev: 1.2
 History:
+    1.2 - fix not used strings and variables
     1.1 - Revision with GUI
     1.0 - Initial Revision
 ────────────────────────────────────────────────────────────────────────────────
@@ -275,7 +276,7 @@ def parse_lib1(filepath_, file, description_level_, with_description_):
                                     if description_string != "" and with_description and level <= description_level:
                                         # entire_string5 = shift_string("\t\t\t\t\t\t", description_string)
                                         entire_string5 = shift_string("", description_string)
-                                        # file.write(f'\n<pre> \n{entire_string5}</pre>')
+                                        file.write(f'\t<pre> {entire_string5}</pre>\n')
                                 except KeyError:
                                     pass
                             # level 6
@@ -295,6 +296,7 @@ def parse_lib1(filepath_, file, description_level_, with_description_):
                                                     level <= description_level:
                                                 entire_string7 = shift_string("\t\t\t\t\t\t\t\t\t",
                                                                               description_string)
+                                                file.write(f'\t<pre> {entire_string7}</pre>\n')                             
                                                 # file.writelines(entire_string7)
                                         except KeyError:
                                             pass
@@ -316,6 +318,7 @@ def parse_lib1(filepath_, file, description_level_, with_description_):
                                                             level <= description_level:
                                                         entire_string9 = shift_string("\t\t\t\t\t\t\t\t\t\t\t",
                                                                                       description_string)
+                                                        file.write(f'\t<pre> {entire_string9}</pre>\n')
                                                         # file.writelines(entire_string9)
                                                 except KeyError:
                                                     pass
@@ -436,14 +439,14 @@ def generate():
 
 def true_or_false_btn():
     boolDecription = str_to_bool_new(str(radiobutton_var.get()))
-
+    print(boolDecription)
 
 def grab_and_assign(event):
     intDescriptionLevel = int(vardescLevel.get())
-
+    print(intDescriptionLevel)
 
 def sel():
-    boolDecription = true_or_false_btn()
+    true_or_false_btn()
 
 
 form = tk.Tk()
